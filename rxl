@@ -14,7 +14,7 @@ local localPlayer = Players.LocalPlayer
  
 -- Verifica si el jugador local está en la lista blanca
 if isUserWhitelisted(localPlayer.UserId) then
-    loadstring(game:HttpGet(""))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Zenxdkd/rxl/main/rxl.lua"))()
 else
     localPlayer:Kick("You'r Not Whitelisted")
 end
