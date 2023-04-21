@@ -1,0 +1,20 @@
+-- Lista de IDs de usuarios autorizados
+local whitelist = {
+    [11983311] = true, -- Reemplaza 12345678 con el ID de un usuario autorizado
+}
+ 
+-- Función para verificar si un usuario está en la lista blanca
+local function isUserWhitelisted(userId)
+    return whitelist[userId] == true
+end
+ 
+-- Obtén el jugador local
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer
+ 
+-- Verifica si el jugador local está en la lista blanca
+if isUserWhitelisted(localPlayer.UserId) then
+    loadstring(game:HttpGet(""))()
+else
+    localPlayer:Kick("You'r Not Whitelisted")
+end
