@@ -32,6 +32,7 @@ local uwuSilentFOV = uwuRXL.Silent.FOV
 local uwuTrace = uwuRXL.Tracer
 local uwuFpsUnlock = uwuRXL.Misc.FpsUnlocker
 local uwuHeadless = uwuRXL.Misc.Headless
+local uwu360 = uwuRXL.Key360.Enabled
 
 -- // Optimization
 local vect3 = Vector3.new
@@ -405,4 +406,46 @@ end
 
 if uwuHeadless then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxHackerProLuaStuff/avatar-editor-thing/main/headless.lua"))()
+end
+
+
+-- 360
+
+if uwu360 then
+ local Players = game:GetService("Players")
+ local UserInputService = game:GetService("UserInputService")
+ local RunService = game:GetService("RunService")
+ local Camera = workspace.CurrentCamera
+ local Toggle = getgenv().RXL.Key360.Toggle
+ local RotationSpeed = getgenv().RXL.Key360.RotationSpeed
+ local Keybind = getgenv().RXL.Key360.Keybind
+ local function OnKeyPress(Input, GameProcessedEvent)
+
+     if Input.KeyCode == Keybind and not GameProcessedEvent then 
+         Toggle = not Toggle
+     end
+ end
+
+ UserInputService.InputBegan:Connect(OnKeyPress)
+ local LastRenderTime = 0
+ local FullCircleRotation = 2 * math.pi
+ local TotalRotation = 0
+
+ local function RotateCamera()
+     if Toggle then
+         local CurrentTime = tick()
+         local TimeDelta = math.min(CurrentTime - LastRenderTime, 0.01)
+         LastRenderTime = CurrentTime
+
+         local Rotation = CFrame.fromAxisAngle(Vector3.new(0, 1, 0), math.rad(RotationSpeed * TimeDelta))
+         Camera.CFrame = Camera.CFrame * Rotation
+
+         TotalRotation = TotalRotation + math.rad(RotationSpeed * TimeDelta)
+         if TotalRotation >= FullCircleRotation then
+             Toggle = false
+             TotalRotation = 0
+         end
+     end
+ end
+ RunService.RenderStepped:Connect(RotateCamera)
 end
