@@ -2,6 +2,7 @@
 local whitelist = {
     [11983311] = true, -- Reemplaza 12345678 con el ID de un usuario autorizado
     [3771136244] = true,
+    [4449713023] = true,
 }
  
 -- Función para verificar si un usuario está en la lista blanca
