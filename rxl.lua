@@ -31,6 +31,8 @@ local uwuTrace = uwuZ4.Tracer
 local uwuFpsUnlock = uwuZ4.Misc.FpsUnlocker
 local uwuHeadless = uwuZ4.Misc.Headless
 local uwu360 = uwuZ4.Key360.Enabled
+local uwuMacro = uwuZ4.Macro.Enabled
+local uwuMacroKeyBind = uwuZ4.Macro.KeyBind
 
 -- // Optimization
 local vect3 = Vector3.new
@@ -448,3 +450,31 @@ if uwu360 then
     end
     RunService.RenderStepped:Connect(RotateCamera)
 end
+
+
+
+
+local Player = game:GetService("Players").LocalPlayer  -- MACRO
+            local Mouse = Player:GetMouse()
+            local SpeedGlitch = false
+            Mouse.KeyDown:Connect(function(Key)
+                if uwuMacro == true and Key == uwuMacroKeyBind then
+                    SpeedGlitch = not SpeedGlitch
+                    if SpeedGlitch == true then
+                        repeat game:GetService("RunService").Heartbeat:wait()
+                            keypress(0x49)
+                            game:GetService("RunService").Heartbeat:wait()
+
+                            keypress(0x4F)
+                            game:GetService("RunService").Heartbeat:wait()
+
+                            keyrelease(0x49)
+                            game:GetService("RunService").Heartbeat:wait()
+
+                            keyrelease(0x4F)
+                            game:GetService("RunService").Heartbeat:wait()
+
+                        until SpeedGlitch == false
+                    end
+                end
+            end)
