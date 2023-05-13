@@ -260,7 +260,7 @@ rs.RenderStepped:Connect(function()
         CPart = uwuFindPart()
         local pos = nil
         local cum = nil
-        if uwuUnlockOnDeath and CTarget.Character.BodyEffects["K.O"].Value == true or lplr.Character.BodyEffects["K.O"].Value == true then
+        if uwuUnlockOnDeath == true and CTarget.Character.BodyEffects["K.O"].Value == true or lplr.Character.BodyEffects["K.O"].Value == true then
             CToggle = false
             CTarget = nil
         else
