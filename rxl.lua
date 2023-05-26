@@ -407,7 +407,7 @@ end
 --headless
 
 if uwuHeadless then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxHackerProLuaStuff/avatar-editor-thing/main/headless.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Zenxdkd/idgaf/main/headles"))()
 end
 
 if uwuSkin then -- skin changer
