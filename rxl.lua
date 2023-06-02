@@ -21,20 +21,20 @@ end
 local mainevent = MainEventLocate()
 
 -- // Shorthand
-local uwuZ4 = getgenv().Z4
-local uwuMain = uwuZ4.General
-local uwuCamMain = uwuZ4.Camlock.Main
-local uwuCamFOV = uwuZ4.Camlock.FOV
-local uwuSilentMain = uwuZ4.Silent.Main
-local uwuSilentFOV = uwuZ4.Silent.FOV
-local uwuTrace = uwuZ4.Tracer
-local uwuFpsUnlock = uwuZ4.Misc.FpsUnlocker
-local uwuHeadless = uwuZ4.Misc.Headless
-local uwu360 = uwuZ4.Key360.Enabled
-local uwuMacro = uwuZ4.Macro.Enabled
-local uwuMacroKeyBind = uwuZ4.Macro.KeyBind
-local uwuSkin = uwuZ4.Misc.SkinChanger
-local uwuUnlockOnDeath = uwuZ4.Misc.UnlockOnDeath
+local uwuHELL = getgenv().HELL
+local uwuMain = uwuHELL.General
+local uwuCamMain = uwuHELL.Camlock.Main
+local uwuCamFOV = uwuHELL.Camlock.FOV
+local uwuSilentMain = uwuHELL.Silent.Main
+local uwuSilentFOV = uwuHELL.Silent.FOV
+local uwuTrace = uwuHELL.Tracer
+local uwuFpsUnlock = uwuHELL.Misc.FpsUnlocker
+local uwuHeadless = uwuHELL.Misc.Headless
+local uwu360 = uwuHELL.Key360.Enabled
+local uwuMacro = uwuHELL.Macro.Enabled
+local uwuMacroKeyBind = uwuHELL.Macro.KeyBind
+local uwuSkin = uwuHELL.Misc.SkinChanger
+local uwuUnlockOnDeath = uwuHELL.Misc.UnlockOnDeath
 
 -- // Optimization
 local vect3 = Vector3.new
@@ -67,7 +67,7 @@ local c = ws.CurrentCamera
 -- // Notification Function
 local function SendNotification(text)
     Notification:Notify(
-        {Title = "Z4 Rewrite", Description = "exit#7360 - "..text},
+        {Title = "HELL Rewrite", Description = "exit#7360 - "..text},
         {OutlineColor = Color3.fromRGB(50,76,110),Time = 2, Type = "image"},
         {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(50,76,110)}
     )
@@ -75,9 +75,9 @@ end
 
 -- // Call notification function
 if uwuMain.Notifications then
-    SendNotification("exit#7360 - injecting Z4 Rewrite")
+    SendNotification("exit#7360 - injecting HELL Rewrite")
     wait(3.5)
-    SendNotification("exit#7360 - finished injecting Z4 Rewrite")
+    SendNotification("exit#7360 - finished injecting HELL Rewrite")
 end
 
 -- // Camlock FOV
@@ -260,7 +260,7 @@ rs.RenderStepped:Connect(function()
         CPart = uwuFindPart()
         local pos = nil
         local cum = nil
-        if uwuUnlockOnDeath == true and CTarget.Character.BodyEffects["K.O"].Value == true or lplr.Character.BodyEffects["K.O"].Value == true then
+        if uwuUnlockOnDeath and CTarget.Character.BodyEffects["K.O"].Value == true or lplr.Character.BodyEffects["K.O"].Value == true then
             CToggle = false
             CTarget = nil
         else
@@ -407,7 +407,7 @@ end
 --headless
 
 if uwuHeadless then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Zenxdkd/idgaf/main/headles"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxHackerProLuaStuff/avatar-editor-thing/main/headless.lua"))()
 end
 
 if uwuSkin then -- skin changer
@@ -423,9 +423,9 @@ if uwu360 then
     local UserInputService = game:GetService("UserInputService")
     local RunService = game:GetService("RunService")
     local Camera = workspace.CurrentCamera
-    local Toggle = getgenv().Z4.Key360.Toggle
-    local RotationSpeed = getgenv().Z4.Key360.RotationSpeed
-    local Keybind = getgenv().Z4.Key360.Keybind
+    local Toggle = getgenv().HELL.Key360.Toggle
+    local RotationSpeed = getgenv().HELL.Key360.RotationSpeed
+    local Keybind = getgenv().HELL.Key360.Keybind
     local function OnKeyPress(Input, GameProcessedEvent)
    
         if Input.KeyCode == Keybind and not GameProcessedEvent then 
